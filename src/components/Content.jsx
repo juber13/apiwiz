@@ -49,8 +49,8 @@ const Content = () => {
                 <textarea onKeyUp={handleText} rows="8" className='w-full outline-none resize-none border border-1 p-2'></textarea>
             </div>
 
-            <div className='rounded-md shadow-md'>
-                <div className='text-xs grid grid-cols-6 bg-gray-200 p-2'>
+            <div className='rounded-md shadow-md grid md:grid-cols-1 grid-cols-2 '>
+                <div className='text-xs grid md:grid-cols-6 grid-cols-1 bg-gray-200 p-2'>
                     <div className='w-[70px]'>Characters</div>
                     <div className='w-[70px]'>Words</div>
                     <div className='w-[70px]'>Sentences</div>
@@ -59,7 +59,7 @@ const Content = () => {
                     <div className='w-[70px]'>Punctuations</div>
                 </div>
 
-                <div className='text-xs grid grid-cols-6 bg-gray-100 p-2'>
+                <div className='text-xs grid md:grid-cols-6 grid-cols-1 bg-gray-100 p-2'>
                     <div className='w-[70px]'>{characterCounter()}</div>
                     <div className='w-[70px]'>{wordCounter()}</div>
                     <div className='w-[70px]'>{sentenceCounter()}</div>
