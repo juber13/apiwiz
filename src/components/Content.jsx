@@ -1,22 +1,25 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 const Content = () => {
     const [text, setText] = useState("");
-    const [data, setData] = useState({
-        charActer: 0,
-        words: 0,
-        sentence: 0,
-        paragraph: 0,
-        space: 0,
-        puntuation: 0,
-    })
+    const [counter, setCounter] = useState(0);
 
-
-
-    const characterCounter = () => text.split("").filter(word => word !== " " && word !== "").length;
-    const wordCounter = () => text.split(" ").filter(word => word.length > 0 && word !== " " && word !== "").length;
+    const characterCounter = () => text.split("").filter(word => word !== "").length;
+    
+    const wordCounter = () => text.split(/\n| /).filter(word => (word.length > 0 && word !== " " && word !== "")).length;
+    
+    const sentenceCounter = () => text.split(/[,.?!] |\n/).filter(text => text !== '').length;
+    
+    const paraCounter = () => text.split("\n").filter(word => word !== " " && word !== "").length;
+   
     const spaceCounter = () => text.split("").filter(word => word === " ").length;
-    const sentenceCounter = () => text.split(/[,.?!]/).filter(text => text !== '').length;
+   
+    const Punctuations = () => {
+        // regex to match punctuations
+        const regex = /[,.?:;"'\-_]/g;
+        const matches = text.match(regex) === null ? 0  : text.match(regex).length ;
+        return matches;
+    };
 
 
 
@@ -25,7 +28,16 @@ const Content = () => {
         characterCounter();
         wordCounter();
         spaceCounter();
+        paraCounter();
+        Punctuations();
+        if (e.key === 'Enter') {
+            setCounter(paraCounter());
+        }
     }
+    useEffect(() => {
+        setCounter(paraCounter());
+    }, [text])
+
 
 
     return (
@@ -36,7 +48,7 @@ const Content = () => {
             </div>
 
             <div className="area-fiel">
-                <textarea onChange={handleText} rows="8" className='w-full outline-none resize-none border border-1 p-2'></textarea>
+                <textarea onKeyUp={handleText} rows="8" className='w-full outline-none resize-none border border-1 p-2'></textarea>
             </div>
 
             <div className='rounded-md shadow-md'>
@@ -51,11 +63,11 @@ const Content = () => {
 
                 <div className='text-xs grid grid-cols-6 bg-gray-100 p-2'>
                     <div className='w-[70px]'>{characterCounter()}</div>
-                    <div className='w-[70px]'>{wordCounter() || 0}</div>
+                    <div className='w-[70px]'>{wordCounter()}</div>
                     <div className='w-[70px]'>{sentenceCounter()}</div>
-                    <div className='w-[70px]'>Hello 1</div>
+                    <div className='w-[70px]'>{counter}</div>
                     <div className='w-[70px]'>{spaceCounter()}</div>
-                    <div className='w-[70px]'>Hello 1</div>
+                    <div className='w-[70px]'>{Punctuations()}</div>
                 </div>
             </div>
         </div>
