@@ -21,8 +21,6 @@ const Content = () => {
         return matches;
     };
 
-
-
     const handleText = (e) => {
         setText(e.target.value);
         characterCounter();
