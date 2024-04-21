@@ -51,7 +51,7 @@ const Content = ({isActive}) => {
             </div>
 
             <div className={`rounded-md shadow-md grid md:grid-cols-1 grid-cols-2`}>
-                <div className={`text-xs grid md:grid-cols-6 grid-cols-1 bg-gray-200 p-2 ${isActive && 'bg-[#111827]'}`}>
+                <div className={`text-xs grid md:grid-cols-6 grid-cols-1  p-2 ${isActive ? 'bg-[#111827]' : "bg-gray-200"}`}>
                     <div className='w-[70px]'>Characters</div>
                     <div className='w-[70px]'>Words</div>
                     <div className='w-[70px]'>Sentences</div>
@@ -60,7 +60,7 @@ const Content = ({isActive}) => {
                     <div className='w-[70px]'>Punctuations</div>
                 </div>
 
-                <div className={`text-xs grid md:grid-cols-6 grid-cols-1 bg-gray-100 p-2 ${isActive && 'bg-[#0d121d]'}`}>
+                <div className={`text-xs grid md:grid-cols-6 grid-cols-1  p-2 ${isActive ? 'bg-[#0d121d]' : "bg-gray-100"}`}>
                     <div className='w-[70px]'>{characterCounter()}</div>
                     <div className='w-[70px]'>{wordCounter()}</div>
                     <div className='w-[70px]'>{sentenceCounter()}</div>
