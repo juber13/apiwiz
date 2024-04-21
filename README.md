@@ -1,5 +1,4 @@
-# Search Recipe App
-
+# Text Analayzer
 ### Project Link
 
 [Hosted](https://apiwiz.netlify.app/)
