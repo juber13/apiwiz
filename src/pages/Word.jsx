@@ -13,12 +13,11 @@ const Word = ({ isActive }) => {
 
         if (data && data.length > 0) {
             const { partOfSpeech, definitions, antonyms, synonyms } = data[0].meanings[0];
-            // Assuming definitions is an array, so we'll take the first one for this example
             const definition = definitions[0].definition;
             setObject({
                 partOfSpeech,
-                antonym: antonyms[0], // Assuming antonyms is an array, take the first one
-                synonym: synonyms[0], // Assuming synonyms is an array, take the first one
+                antonym: antonyms[0],
+                synonym: synonyms[0],
                 definition
             });
         }
@@ -54,14 +53,14 @@ const Word = ({ isActive }) => {
 
             <div className={`footer grid grid-cols-2 rounded-md mt-4 ${!isActive ? 'bg-gray-200' : 'border border-gray-800'} p-2`}>
                 <div className='flex flex-col text-sm font-700 gap-1'>
-                    <span className='font'>Definition:</span>
-                    <span className='font'>Parts of speech:</span>
-                    <span className='font'>Synonyms:</span>
-                    <span className='font'>Antonyms:</span>
+                    <span>Definition:</span>
+                    <span>Parts of speech:</span>
+                    <span>Synonyms:</span>
+                    <span>Antonyms:</span>
                 </div>
 
                 <div className='flex flex-col text-sm gap-1'>
-                    <span className='text-xs'>{obj.definition || "Not defined"}</span>
+                    <span className=''>{obj.definition || "Not defined"}</span>
                     <span>{obj.partOfSpeech || "Not defined"}</span>
                     <span>{obj.synonym || "Not defined"}</span>
                     <span>{obj.antonym || "Not defined"}</span>
