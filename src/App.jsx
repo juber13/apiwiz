@@ -12,8 +12,8 @@ function App() {
   return (
     <BrowserRouter>
 
-      <div className={`main w-full h-screen flex justify-center items-center ${isActive ? 'bg-black ' : "bg-gray-100"}`}>
-        <div className={`container md:max-w-xl  max-w-[90%]  shadow-xl p-5 rounded-md  0 ${isActive ? 'bg-black border-2 broder border-gray-800 text-white' : "bg-gray-20"}`}>
+      <div className={`main w-full md:h-screen flex justify-center items-center ${isActive ? 'bg-black ' : "bg-gray-100"}`}>
+        <div className={`container md:max-w-xl mt-5 max-w-[90%]  shadow-xl p-5 rounded-md  0 ${isActive ? 'bg-black border-2 broder border-gray-800 text-white' : "bg-gray-20"}`}>
           <Header isActive={isActive} setIsActive={setIsActive} activeDarkMode={activeDarkMode} />
            <Routes>
             <Route path="/" element={<Word  isActive={isActive}/>} />
