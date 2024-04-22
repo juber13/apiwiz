@@ -60,10 +60,10 @@ const Word = ({ isActive }) => {
                 </div>
 
                 <div className='flex flex-col text-sm gap-1'>
-                    <span className=''>{obj.definition || "Not defined"}</span>
-                    <span>{obj.partOfSpeech || "Not defined"}</span>
-                    <span>{obj.synonym || "Not defined"}</span>
-                    <span>{obj.antonym || "Not defined"}</span>
+                    <span className=''>{obj.definition}</span>
+                    <span>{obj.partOfSpeech}</span>
+                    <span>{obj.synonym}</span>
+                    <span>{obj.antonym}</span>
                 </div>
             </div>
 
