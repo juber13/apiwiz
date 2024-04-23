@@ -5,9 +5,7 @@ const Word = ({ isActive }) => {
     const [text, setText] = useState('')
     const [obj, setObject] = useState({})
 
-    const fetchData = async (e) => {
-        e.preventDefault();
-
+    const fetchData = async () => {
         const res = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${text}`);
         const data = await res.json();
 
@@ -23,14 +21,15 @@ const Word = ({ isActive }) => {
         }
     };
 
-    useEffect(() => {
+    const handleSubmit = (e) => {
+        e.preventDefault();
         fetchData();
-    }, [text]);
+    }
 
     return (
         <div className='mt-4'>
             <Buttons />
-            <form className='grid grid-cols-2 items-center mt-3' onSubmit={fetchData}>
+            <form className='grid grid-cols-2 items-center mt-3' onSubmit={handleSubmit}>
                 <div className='form-control'>
                     <input value={text} onChange={(e) => setText(e.target.value)} type="text" placeholder='Search Text' className={`text-sm p-2 rounded-md  px-8 w-[95%] outline-none md:max-w-2xl ${isActive && 'text-black'}`} />
                 </div>
